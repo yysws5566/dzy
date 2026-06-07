@@ -2,6 +2,19 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Git 仓库
+
+- **Remote:** `https://github.com/yysws5566/dzy.git`
+- **分支:** `main`
+- **每次代码修改完成后，执行以下命令同步：**
+  ```bash
+  cd "C:\Users\西西家的咩咩\Projects"
+  git add -A
+  git commit -m "<改动说明>"
+  git push
+  ```
+- **禁止提交的内容（.gitignore 已配置）：** API Key、回测结果 JSON/MD、数据库文件、日志 txt、CSV/XLSX
+
 ## 项目概览
 
 西西的 A 股量化交易工作区，共 5 个策略系统 + 1 个增强因子库，彼此有因子复用和复盘关联。
