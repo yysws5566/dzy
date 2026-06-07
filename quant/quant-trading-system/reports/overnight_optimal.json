@@ -1,0 +1,31 @@
+{
+  "weights": {
+    "tail_volume": 0.21903576885307202,
+    "intraday_trend": 0.18133632421008877,
+    "volume_accum": 0.08960755300017484,
+    "auction": 0.07983455425041314,
+    "gap": 0.11845122987853227,
+    "reversal": 0.03313098697103833,
+    "ma_position": 0.06028974587300276,
+    "integer_psych": 0.09067164170559316,
+    "sector_rel": 0.12764219525808468
+  },
+  "buy_threshold": 0.5252525769809209,
+  "exit_strategy": "open",
+  "predicted_win_rate": 77.9,
+  "predicted_profit_factor": 7.22,
+  "predicted_sharpe": 10.35,
+  "avg_return": 0.78,
+  "factor_ic": {
+    "tail_volume": 0.095,
+    "intraday_trend": -0.078,
+    "volume_accum": 0.015,
+    "auction": -0.076,
+    "gap": -0.032,
+    "ma_position": -0.058,
+    "integer_psych": -0.025,
+    "sector_rel": 0.083
+  },
+  "optimized_at": "2026-06-06T18:22:06.713015",
+  "total_trials": 657
+}

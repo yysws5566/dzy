@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 策略输出 / 回测结果（含个人交易数据）
+results/
+reports/*.json
+reports/*.md
+*.result.json
+*.result.md
+tail_hunter_results/
+
+# 数据库和缓存
+*.db
+*.sqlite
+*.csv
+*.xlsx
+
+# 日志
+*.log
+*.txt
+
+# 环境变量（本地配置）
+.env
+.env.local
+strategy_config.local.json
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# TickFlow 缓存
+.tickflow/
+
+# Jupyter
+.ipynb_checkpoints/

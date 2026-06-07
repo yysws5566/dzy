@@ -1,0 +1,321 @@
+{
+  "date": "2026-06-05",
+  "method": "merged",
+  "signals": [
+    {
+      "symbol": "600373.SH",
+      "name": "中文传媒",
+      "buy_price": 7.52,
+      "total_score": 0.6882966812759523,
+      "signal": "BUY",
+      "position_pct": 0.05104,
+      "change_pct": 0.0273224043715846,
+      "factor_scores": {
+        "tail_volume": 1.0,
+        "intraday_trend": 0.78,
+        "volume_accum": 0.5,
+        "auction": 0.5,
+        "gap": 0.5,
+        "reversal": 0.5,
+        "ma_position": 0.4,
+        "seal_quality": 0.5,
+        "global_linkage": 0.5,
+        "overnight_risk": 1.0
+      }
+    },
+    {
+      "symbol": "002734.SZ",
+      "name": "利民股份",
+      "buy_price": 17.33,
+      "total_score": 0.5975870857102603,
+      "signal": "BUY",
+      "position_pct": 0.04808,
+      "change_pct": 0.005803830528148454,
+      "factor_scores": {
+        "tail_volume": 0.5,
+        "intraday_trend": 0.72,
+        "volume_accum": 0.7,
+        "auction": 0.5,
+        "gap": 0.5,
+        "reversal": 0.5,
+        "ma_position": 0.72,
+        "seal_quality": 0.5,
+        "global_linkage": 0.5,
+        "overnight_risk": 0.87
+      }
+    },
+    {
+      "symbol": "688169.SH",
+      "name": "石头科技",
+      "buy_price": 108.68,
+      "total_score": 0.5938322750941538,
+      "signal": "BUY",
+      "position_pct": 0.046649800823999395,
+      "change_pct": 0.0429942418426104,
+      "factor_scores": {
+        "tail_volume": 0.5,
+        "intraday_trend": 0.78,
+        "volume_accum": 0.7012,
+        "auction": 0.5,
+        "gap": 0.5,
+        "reversal": 0.5,
+        "ma_position": 0.5,
+        "seal_quality": 0.5,
+        "global_linkage": 0.5,
+        "overnight_risk": 0.85
+      }
+    },
+    {
+      "symbol": "000887.SZ",
+      "name": "中鼎股份",
+      "buy_price": 21.99,
+      "total_score": 0.5931273255710443,
+      "signal": "BUY",
+      "position_pct": 0.05043302738505201,
+      "change_pct": 0.07007299270072981,
+      "factor_scores": {
+        "tail_volume": 0.48,
+        "intraday_trend": 0.5,
+        "volume_accum": 0.8441,
+        "auction": 0.75,
+        "gap": 0.5,
+        "reversal": 0.5,
+        "ma_position": 0.72,
+        "seal_quality": 0.5,
+        "global_linkage": 0.62,
+        "overnight_risk": 0.85
+      }
+    },
+    {
+      "symbol": "300263.SZ",
+      "name": "隆华科技",
+      "buy_price": 11.84,
+      "total_score": 0.5902563570680305,
+      "signal": "BUY",
+      "position_pct": 0.049038592813043506,
+      "change_pct": 0.007659574468085095,
+      "factor_scores": {
+        "tail_volume": 0.5,
+        "intraday_trend": 0.68,
+        "volume_accum": 0.6098,
+        "auction": 0.72,
+        "gap": 0.5,
+        "reversal": 0.5,
+        "ma_position": 0.4,
+        "seal_quality": 0.5,
+        "global_linkage": 0.75,
+        "overnight_risk": 0.77
+      }
+    },
+    {
+      "symbol": "688789.SH",
+      "name": "宏华数科",
+      "buy_price": 51.57,
+      "total_score": 0.5888068128190341,
+      "signal": "BUY",
+      "position_pct": 0.04851615994101474,
+      "change_pct": 0.02017804154302677,
+      "factor_scores": {
+        "tail_volume": 0.58,
+        "intraday_trend": 0.72,
+        "volume_accum": 0.6145,
+        "auction": 0.5,
+        "gap": 0.5,
+        "reversal": 0.5,
+        "ma_position": 0.3,
+        "seal_quality": 0.5,
+        "global_linkage": 0.5,
+        "overnight_risk": 0.95
+      }
+    },
+    {
+      "symbol": "603486.SH",
+      "name": "科沃斯",
+      "buy_price": 58.92,
+      "total_score": 0.5884145636382653,
+      "signal": "BUY",
+      "position_pct": 0.046642153997909316,
+      "change_pct": 0.038787023977433055,
+      "factor_scores": {
+        "tail_volume": 0.5,
+        "intraday_trend": 0.72,
+        "volume_accum": 0.7603,
+        "auction": 0.5,
+        "gap": 0.5,
+        "reversal": 0.5,
+        "ma_position": 0.5,
+        "seal_quality": 0.5,
+        "global_linkage": 0.5,
+        "overnight_risk": 0.85
+      }
+    },
+    {
+      "symbol": "600843.SH",
+      "name": "上工申贝",
+      "buy_price": 7.53,
+      "total_score": 0.5854287924851881,
+      "signal": "BUY",
+      "position_pct": 0.049825762818323245,
+      "change_pct": 0.012096774193548368,
+      "factor_scores": {
+        "tail_volume": 0.5,
+        "intraday_trend": 0.68,
+        "volume_accum": 0.6282,
+        "auction": 0.72,
+        "gap": 0.5,
+        "reversal": 0.5,
+        "ma_position": 0.3,
+        "seal_quality": 0.5,
+        "global_linkage": 0.65,
+        "overnight_risk": 0.85
+      }
+    },
+    {
+      "symbol": "000719.SZ",
+      "name": "中原传媒",
+      "buy_price": 13.26,
+      "total_score": 0.5821424181382,
+      "signal": "BUY",
+      "position_pct": 0.04704,
+      "change_pct": 0.011441647597254032,
+      "factor_scores": {
+        "tail_volume": 0.5,
+        "intraday_trend": 0.78,
+        "volume_accum": 0.5,
+        "auction": 0.5,
+        "gap": 0.5,
+        "reversal": 0.5,
+        "ma_position": 0.4,
+        "seal_quality": 0.5,
+        "global_linkage": 0.5,
+        "overnight_risk": 1.0
+      }
+    },
+    {
+      "symbol": "688793.SH",
+      "name": "倍轻松",
+      "buy_price": 18.18,
+      "total_score": 0.5785960346028639,
+      "signal": "BUY",
+      "position_pct": 0.04808,
+      "change_pct": 0.021348314606741515,
+      "factor_scores": {
+        "tail_volume": 0.5,
+        "intraday_trend": 0.78,
+        "volume_accum": 0.5,
+        "auction": 0.68,
+        "gap": 0.5,
+        "reversal": 0.5,
+        "ma_position": 0.3,
+        "seal_quality": 0.5,
+        "global_linkage": 0.5,
+        "overnight_risk": 0.85
+      }
+    },
+    {
+      "symbol": "300126.SZ",
+      "name": "锐奇股份",
+      "buy_price": 6.94,
+      "total_score": 0.5763547807474583,
+      "signal": "BUY",
+      "position_pct": 0.04504,
+      "change_pct": 0.03892215568862286,
+      "factor_scores": {
+        "tail_volume": 0.5,
+        "intraday_trend": 0.78,
+        "volume_accum": 0.5,
+        "auction": 0.5,
+        "gap": 0.5,
+        "reversal": 0.5,
+        "ma_position": 0.5,
+        "seal_quality": 0.5,
+        "global_linkage": 0.5,
+        "overnight_risk": 0.85
+      }
+    },
+    {
+      "symbol": "600229.SH",
+      "name": "城市传媒",
+      "buy_price": 5.51,
+      "total_score": 0.5724214633104407,
+      "signal": "BUY",
+      "position_pct": 0.047439999999999996,
+      "change_pct": 0.029906542056074452,
+      "factor_scores": {
+        "tail_volume": 0.5,
+        "intraday_trend": 0.78,
+        "volume_accum": 0.5,
+        "auction": 0.5,
+        "gap": 0.5,
+        "reversal": 0.5,
+        "ma_position": 0.3,
+        "seal_quality": 0.5,
+        "global_linkage": 0.5,
+        "overnight_risk": 0.95
+      }
+    },
+    {
+      "symbol": "002391.SZ",
+      "name": "长青股份",
+      "buy_price": 5.49,
+      "total_score": 0.5724214633104407,
+      "signal": "BUY",
+      "position_pct": 0.047439999999999996,
+      "change_pct": 0.011049723756906169,
+      "factor_scores": {
+        "tail_volume": 0.5,
+        "intraday_trend": 0.78,
+        "volume_accum": 0.5,
+        "auction": 0.5,
+        "gap": 0.5,
+        "reversal": 0.5,
+        "ma_position": 0.3,
+        "seal_quality": 0.5,
+        "global_linkage": 0.5,
+        "overnight_risk": 0.95
+      }
+    },
+    {
+      "symbol": "002258.SZ",
+      "name": "利尔化学",
+      "buy_price": 13.37,
+      "total_score": 0.5624093626643782,
+      "signal": "BUY",
+      "position_pct": 0.046624391318678134,
+      "change_pct": 0.019832189168573593,
+      "factor_scores": {
+        "tail_volume": 0.5,
+        "intraday_trend": 0.5,
+        "volume_accum": 0.758,
+        "auction": 0.5,
+        "gap": 0.5,
+        "reversal": 0.5,
+        "ma_position": 0.72,
+        "seal_quality": 0.5,
+        "global_linkage": 0.5,
+        "overnight_risk": 0.85
+      }
+    },
+    {
+      "symbol": "301025.SZ",
+      "name": "读客文化",
+      "buy_price": 9.11,
+      "total_score": 0.5530274007722875,
+      "signal": "BUY",
+      "position_pct": 0.048164824583528304,
+      "change_pct": 0.0224466891133557,
+      "factor_scores": {
+        "tail_volume": 0.5,
+        "intraday_trend": 0.5,
+        "volume_accum": 0.6206,
+        "auction": 0.75,
+        "gap": 0.5,
+        "reversal": 0.5,
+        "ma_position": 0.3,
+        "seal_quality": 0.5,
+        "global_linkage": 0.5,
+        "overnight_risk": 0.95
+      }
+    }
+  ]
+}

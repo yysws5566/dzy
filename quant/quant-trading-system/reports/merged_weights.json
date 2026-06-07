@@ -1,0 +1,28 @@
+{
+  "weights": {
+    "tail_volume": 0.15,
+    "intraday_trend": 0.13,
+    "volume_accum": 0.1,
+    "auction": 0.12,
+    "gap": 0.1,
+    "reversal": 0.08,
+    "ma_position": 0.07,
+    "seal_quality": 0.1,
+    "global_linkage": 0.07,
+    "overnight_risk": 0.08
+  },
+  "updated_at": "2026-06-06T19:58:01.009836",
+  "total_records": 15,
+  "db_optimized_weights": {
+    "tail_volume": 0.1,
+    "intraday_trend": 0.1,
+    "volume_accum": 0.1,
+    "auction": 0.1,
+    "gap": 0.1,
+    "reversal": 0.1,
+    "ma_position": 0.1,
+    "seal_quality": 0.1,
+    "global_linkage": 0.1,
+    "overnight_risk": 0.1
+  }
+}

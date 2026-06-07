@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>紫金矿业 + 洛阳钼业 · 箱体波动策略</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f0f4f9;padding:20px;color:#222}
+.container{max-width:1280px;margin:0 auto}
+
+/* ===== HEADER ===== */
+.header{background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);color:white;padding:28px 32px;border-radius:14px;margin-bottom:16px;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,0.03);border-radius:50%}
+.header .badge{display:inline-block;background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:12px;font-size:11px;margin-bottom:10px;position:relative;z-index:1}
+.header h1{font-size:24px;font-weight:700;margin-bottom:6px;position:relative;z-index:1}
+.header .subtitle{font-size:14px;opacity:0.85;margin-bottom:14px;position:relative;z-index:1}
+.header .meta{font-size:12px;opacity:0.8;display:flex;gap:18px;flex-wrap:wrap;position:relative;z-index:1}
+.header .meta span{background:rgba(255,255,255,0.08);padding:4px 12px;border-radius:20px}
+
+/* ===== TOC ===== */
+.toc{background:#fafbfc;border-radius:10px;padding:14px 18px;margin-bottom:16px;border:1px solid #e8eef6}
+.toc-title{font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:10px}
+.toc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.toc-grid a{display:block;padding:7px 12px;background:white;border-radius:6px;font-size:12px;color:#1a1a2e;text-decoration:none;border:1px solid #e0e8f0;transition:all .15s}
+.toc-grid a:hover{background:#1a1a2e;color:white;border-color:#1a1a2e}
+
+/* ===== SECTION ===== */
+.section{background:white;border-radius:14px;padding:22px 28px;margin-bottom:16px;box-shadow:0 2px 12px rgba(30,78,140,0.04)}
+.section h2{font-size:19px;font-weight:700;color:#1a1a2e;margin-bottom:4px;padding-left:12px;border-left:4px solid #3498db;display:flex;align-items:center;gap:8px}
+.sec-sub{font-size:12px;color:#999;margin-bottom:18px;padding-left:16px}
+
+/* ===== KPI CARDS ===== */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.kpi{background:linear-gradient(135deg,#fafcff,#eef3fa);border:1px solid #d6e0ee;border-radius:10px;padding:16px 18px;transition:transform .15s}
+.kpi:hover{transform:translateY(-2px)}
+.kpi .label{font-size:11px;color:#888;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.kpi .val{font-size:26px;font-weight:700;color:#1a1a2e}
+.kpi .delta{margin-top:6px;font-size:12px;font-weight:600}
+.kpi .delta.up{color:#e74c3c}
+.kpi .delta.down{color:#27ae60}
+
+/* ===== TABLES ===== */
+.data-table{width:100%;border-collapse:collapse;font-size:12px;background:white;border-radius:6px;overflow:hidden}
+.data-table thead{background:linear-gradient(135deg,#1a1a2e,#2d6cb8);color:white}
+.data-table th{padding:9px 12px;text-align:left;font-weight:500;white-space:nowrap}
+.data-table th.num{text-align:right}
+.data-table td{padding:8px 12px;border-bottom:1px solid #f0f3f7;vertical-align:middle}
+.data-table td.num{text-align:right;font-variant-numeric:tabular-nums}
+.data-table tbody tr:hover{background:#fafcff}
+
+/* ===== DELTA BADGE ===== */
+.delta-badge{display:inline-block;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:600}
+.delta-badge.bad{background:#ffe8e8;color:#c0392b}
+.delta-badge.good{background:#e8f8ee;color:#27ae60}
+.delta-badge.neutral{background:#f0f0f0;color:#888}
+.d-red{color:#e74c3c;font-size:11px;font-weight:600}
+.d-green{color:#27ae60;font-size:11px;font-weight:600}
+.d-gray{color:#999;font-size:11px}
+.num.danger{color:#c0392b;font-weight:600}
+.num.success{color:#27ae60}
+
+/* ===== CONCLUSION ===== */
+.conclusion{background:linear-gradient(90deg,#f0f5fb,#f8fafd);padding:14px 18px;border-radius:8px;font-size:13px;line-height:1.8;color:#333;border-left:4px solid #3498db;margin-top:10px}
+.conclusion b{color:#1a1a2e}
+.conclusion ul{padding-left:18px;margin-top:6px}
+.conclusion li{margin-bottom:4px}
+.conclusion.warn{background:linear-gradient(90deg,#fff5f5,#fef9f0);border-left-color:#e74c3c}
+.conclusion.warn b{color:#e74c3c}
+
+/* ===== INSIGHT CARDS ===== */
+.insight-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px 0}
+.insight-card{background:white;border-radius:10px;padding:16px;border-top:4px solid;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.insight-card.c1{border-color:#3498db}.insight-card.c1 h4{color:#3498db}
+.insight-card.warn{border-color:#f39c12}.insight-card.warn h4{color:#f39c12}
+.insight-card.c3{border-color:#e74c3c}.insight-card.c3 h4{color:#e74c3c}
+.insight-card.green{border-color:#27ae60}.insight-card.green h4{color:#27ae60}
+.insight-card h4{font-size:14px;margin-bottom:6px;font-weight:700}
+.insight-card p{font-size:12px;color:#555;line-height:1.75;margin-bottom:4px}
+
+/* ===== BOX VISUAL ===== */
+.box-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f0f3f7}
+.box-bar{flex-shrink:0;height:36px;border-radius:4px;display:flex;align-items:center;padding:0 12px;font-size:12px;font-weight:700;min-width:60px}
+.box-bar.sell{background:#ffe8e8;color:#c0392b}.box-bar.sell2{background:#ffe0c0;color:#c0392b}
+.box-bar.neutral{background:#f0f0f0;color:#888}
+.box-bar.buy{background:#e8f8ee;color:#27ae60}.box-bar.buy2{background:#fff8e0;color:#d4a000}
+.box-bar.stop{background:#e8f0ff;color:#3498db}
+.box-desc{font-size:11px;color:#888;flex:1}
+
+/* ===== TWO COL ===== */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+
+/* ===== ACTION TABLE ===== */
+.action-table{width:100%;font-size:12px;border-collapse:collapse;margin-top:8px}
+.action-table th{background:#f0f5fb;padding:10px 12px;text-align:left;color:#666;font-weight:600}
+.action-table td{padding:10px 12px;border-bottom:1px solid #eef2f7}
+.prio{display:inline-block;padding:4px 10px;border-radius:4px;font-size:11px;color:white;font-weight:700}
+.prio-h{background:#e74c3c}.prio-m{background:#f39c12}.prio-l{background:#3498db}
+
+/* ===== FOOTER ===== */
+.footer-note{text-align:center;color:#aaa;font-size:11px;padding:18px}
+@media(max-width:800px){.insight-row,.kpi-row,.two-col,.toc-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ═══════════ HEADER ═══════════ -->
+<div class="header">
+  <div class="badge">📦 高胜率波段策略 · 箱体震荡模型</div>
+  <h1>紫金矿业 + 洛阳钼业 · 箱体波动操作手册</h1>
+  <div class="subtitle">基于箱体三区划分的分档买卖策略，配合日/周涨跌幅阈值，追求高胜率波段收益</div>
+  <div class="meta">
+    <span>🏔️ 紫金矿业 601899</span>
+    <span>⛏️ 洛阳钼业 603993</span>
+    <span>📅 数据截至 2026-06-05</span>
+    <span>📐 波动率 35% / 振幅 ~5%</span>
+  </div>
+</div>
+
+<!-- ═══════════ TOC ═══════════ -->
+<div class="toc">
+  <div class="toc-title">📑 模块导航</div>
+  <div class="toc-grid">
+    <a href="#ch0">📊 核心指标速览</a>
+    <a href="#ch1">① 紫金矿业 · 箱体三区</a>
+    <a href="#ch2">② 紫金矿业 · 买卖规则</a>
+    <a href="#ch3">③ 洛阳钼业 · 箱体三区</a>
+    <a href="#ch4">④ 洛阳钼业 · 买卖规则</a>
+    <a href="#ch5">⑤ 风控体系 · 四维校验</a>
+    <a href="#ch6">⑥ 当前作战地图</a>
+    <a href="#ch7">⑦ 每日操作清单</a>
+  </div>
+</div>
+
+<!-- ═══════════ KPI 总览 ═══════════ -->
+<div class="section" id="ch0">
+  <h2>📊 核心指标速览</h2>
+  <div class="sec-sub">紫金矿业（601899） vs 洛阳钼业（603993）· 2026.06.05 收盘关键数据</div>
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="label">🏔️ 紫金矿业 最新价</div>
+      <div class="val">29.63<span style="font-size:14px;color:#aaa;margin-left:4px">元</span></div>
+      <div class="delta up">日内振幅 4.35% · 振幅充沛</div>
+    </div>
+    <div class="kpi">
+      <div class="label">📈 紫金 年化波动率</div>
+      <div class="val">35.36<span style="font-size:14px;color:#aaa;margin-left:4px">%</span></div>
+      <div class="delta up">偏高波动 · 适合做T</div>
+    </div>
+    <div class="kpi">
+      <div class="label">⛏️ 洛阳钼业 最新价</div>
+      <div class="val">18.19<span style="font-size:14px;color:#aaa;margin-left:4px">元</span></div>
+      <div class="delta up">日内振幅 ~5.5% · 空间更大</div>
+    </div>
+    <div class="kpi">
+      <div class="label">📊 洛钼 动态PE</div>
+      <div class="val">12.54<span style="font-size:14px;color:#aaa;margin-left:4px">倍</span></div>
+      <div class="delta down">Q1利润+96.65% · 基本面扎实</div>
+    </div>
+    <div class="kpi">
+      <div class="label">📍 紫金 箱体区间</div>
+      <div class="val">29.00~31.50<span style="font-size:14px;color:#aaa;margin-left:4px">元</span></div>
+      <div class="delta up">当前处于箱体下沿附近</div>
+    </div>
+    <div class="kpi">
+      <div class="label">📍 洛钼 箱体区间</div>
+      <div class="val">18.00~19.50<span style="font-size:14px;color:#aaa;margin-left:4px">元</span></div>
+      <div class="delta up">当前处于箱体下沿附近</div>
+    </div>
+    <div class="kpi">
+      <div class="label">🎯 紫金 止损线</div>
+      <div class="val">27.50<span style="font-size:14px;color:#aaa;margin-left:4px">元</span></div>
+      <div class="delta up">距当前 -7.2% · 箱体破位即走</div>
+    </div>
+    <div class="kpi">
+      <div class="label">🎯 洛钼 止损线</div>
+      <div class="val">15.80<span style="font-size:14px;color:#aaa;margin-left:4px">元</span></div>
+      <div class="delta up">距当前 -13.1% · 箱体破位即走</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ ① 紫金矿业 · 箱体三区 ═══════════ -->
+<div class="section" id="ch1">
+  <h2>① 紫金矿业（601899）· 箱体三区划分</h2>
+  <div class="sec-sub">核心箱体 29.00 ~ 31.50 元 | 扩展箱体 27.80 ~ 34.30 元 | 当前价 <b style="color:#27ae60">29.63 元</b>（箱体下沿）</div>
+
+  <table class="data-table">
+    <thead><tr>
+      <th style="width:40px">层级</th><th>价格区间</th><th>操作类型</th><th>仓位</th><th>触发条件</th><th>说明</th>
+    </tr></thead>
+    <tbody>
+      <tr style="background:#fff5f5"><td><span class="delta-badge bad">S3</span></td><td class="num danger">34.30</td><td>🔴 清仓+翻多</td><td>全清</td><td>放量突破</td><td style="font-size:11px;color:#888">强阻力位，突破则趋势反转，箱体策略失效</td></tr>
+      <tr style="background:#fff8f0"><td><span class="delta-badge bad">S2</span></td><td class="num danger">33.00</td><td>🟠 清仓卖</td><td>全清</td><td>涨至附近</td><td style="font-size:11px;color:#888">筹码成本均价，88%持仓者解套位，抛压最重</td></tr>
+      <tr style="background:#fffaf0"><td><span class="delta-badge neutral">S1</span></td><td class="num" style="color:#d4a000">32.00</td><td>🟡 继续减仓</td><td>再卖 1/3</td><td>涨至附近</td><td style="font-size:11px;color:#888">临近密集套牢区，分批锁利</td></tr>
+      <tr style="background:#fffef5"><td><span class="delta-badge neutral">S0</span></td><td class="num" style="color:#d4a000">31.50</td><td>🟡 首次减仓</td><td>卖 1/3</td><td>日内涨幅≥2%</td><td style="font-size:11px;color:#888">箱体上沿，先锁利保住利润</td></tr>
+      <tr><td colspan="6" style="text-align:center;color:#888;font-size:10px;padding:4px;background:#fafbfc">────────── 核心波动区间：29.00 ~ 31.50 元 ──────────</td></tr>
+      <tr style="background:#f0faf5"><td><span class="delta-badge good">B1</span></td><td class="num success">29.60</td><td>🟢 试探买</td><td>20%</td><td>日内跌幅≥2%</td><td style="font-size:11px;color:#888">箱体下沿 ← 当前价附近，轻仓试探</td></tr>
+      <tr style="background:#f5fdf8"><td><span class="delta-badge good">B2</span></td><td class="num success">29.00</td><td>🟢 标准买</td><td>30%</td><td>分时企稳</td><td style="font-size:11px;color:#888">整数关口强支撑，胜率最高的买点</td></tr>
+      <tr style="background:#fffef5"><td><span class="delta-badge good">B3</span></td><td class="num" style="color:#d4a000">27.80</td><td>🟡 重仓买</td><td>50%</td><td>放量止跌</td><td style="font-size:11px;color:#888">恐慌低点 + K线支撑，盈亏比最优</td></tr>
+      <tr style="background:#f0f5ff"><td><span class="delta-badge neutral">止损</span></td><td class="num" style="color:#3498db">27.50</td><td>🔵 无条件离场</td><td>全清</td><td>收盘跌破</td><td style="font-size:11px;color:#888">箱体破坏确认，不犹豫、不补仓、不幻想</td></tr>
+    </tbody>
+  </table>
+
+  <div class="conclusion warn" style="margin-top:14px">
+    <b>🔍 紫金核心逻辑：</b>29以下分批买 → 31以上分批卖，箱体不破反复做。跌破27.5认输。当前29.63在B1试探区，等29.00（B2）再动手胜率更高、盈亏比更好。
+  </div>
+</div>
+
+<!-- ═══════════ ② 紫金矿业 · 买卖规则 ═══════════ -->
+<div class="section" id="ch2">
+  <h2>② 紫金矿业 · 日/周买卖阈值</h2>
+  <div class="sec-sub">日内做T + 3~5日波段 + 周线级别 · 三级时间框架配合</div>
+
+  <div class="two-col">
+    <div class="insight-card green">
+      <h4>🟢 买入信号矩阵</h4>
+      <table class="data-table" style="font-size:11px">
+        <thead><tr><th>周期</th><th>阈值</th><th>确认条件</th></tr></thead>
+        <tbody>
+          <tr><td><b>日内</b></td><td>跌≥3% + 到箱底(≤29.0)</td><td>分时止跌</td></tr>
+          <tr><td><b>3-5日</b></td><td>回踩箱底 + 缩量</td><td>十字星/长下影</td></tr>
+          <tr><td><b>周线</b></td><td>周跌5-7% + 到28-29区间</td><td>周线长下影</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight-card c3">
+      <h4>🔴 卖出信号矩阵</h4>
+      <table class="data-table" style="font-size:11px">
+        <thead><tr><th>周期</th><th>阈值</th><th>确认条件</th></tr></thead>
+        <tbody>
+          <tr><td><b>日内</b></td><td>涨≥3% + 到箱顶(≥31.5)</td><td>冲高回落</td></tr>
+          <tr><td><b>3-5日</b></td><td>反弹箱顶 + 放量滞涨</td><td>上影线</td></tr>
+          <tr><td><b>周线</b></td><td>周涨5-7% + 到31-33区间</td><td>周线长上影</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="insight-row">
+    <div class="insight-card c1">
+      <h4>💰 仓位分配</h4>
+      <p>单票上限 <b>≤50%</b> 总资金<br>单次分 <b>3批</b>，绝不一次打完<br>浮亏 <b>不加仓</b>（除非到B2/B3）<br>连续止损 <b>2次</b> → 暂停1周</p>
+    </div>
+    <div class="insight-card warn">
+      <h4>📊 量能确认（关键！）</h4>
+      <p>箱底买 → <b>缩量止跌</b>或<b>放量长下影</b><br>箱顶卖 → <b>放量滞涨</b>或<b>冲高回落</b><br>假突破 → <b>无量突破 = 假突破</b>，不追</p>
+    </div>
+    <div class="insight-card green">
+      <h4>🌍 大盘配合</h4>
+      <p>大盘跌 + 个股跌到箱底 → <b>买点更优</b><br>大盘涨 + 个股涨到箱顶 → <b>卖点更优</b><br>大盘涨 + 个股不跟 → <b>警惕弱势</b></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ ③ 洛阳钼业 · 箱体三区 ═══════════ -->
+<div class="section" id="ch3">
+  <h2>③ 洛阳钼业（603993）· 箱体三区划分</h2>
+  <div class="sec-sub">核心箱体 18.00 ~ 19.50 元 | 扩展箱体 17.00 ~ 20.00 元 | 当前价 <b style="color:#27ae60">18.19 元</b>（箱体下沿）</div>
+
+  <table class="data-table">
+    <thead><tr>
+      <th style="width:40px">层级</th><th>价格区间</th><th>操作类型</th><th>仓位</th><th>触发条件</th><th>说明</th>
+    </tr></thead>
+    <tbody>
+      <tr style="background:#fff5f5"><td><span class="delta-badge bad">S3</span></td><td class="num danger">20.00</td><td>🔴 清仓</td><td>全清</td><td>涨至附近</td><td style="font-size:11px;color:#888">心理关口 + 前期冲关失败点，强阻力</td></tr>
+      <tr style="background:#fff8f0"><td><span class="delta-badge bad">S2</span></td><td class="num danger">19.50</td><td>🟠 继续减仓</td><td>再卖 1/3</td><td>涨至附近</td><td style="font-size:11px;color:#888">箱体上沿 + 筹码密集区上沿</td></tr>
+      <tr style="background:#fffef5"><td><span class="delta-badge neutral">S1</span></td><td class="num" style="color:#d4a000">19.00</td><td>🟡 首次减仓</td><td>卖 1/3</td><td>日内涨幅≥2%</td><td style="font-size:11px;color:#888">5/10/20/30日均线密集反压区</td></tr>
+      <tr><td colspan="6" style="text-align:center;color:#888;font-size:10px;padding:4px;background:#fafbfc">────────── 核心波动区间：18.00 ~ 19.50 元 ──────────</td></tr>
+      <tr style="background:#f0faf5"><td><span class="delta-badge good">B1</span></td><td class="num success">18.20</td><td>🟢 试探买</td><td>20%</td><td>日内跌幅≥2%</td><td style="font-size:11px;color:#888">箱体下沿 ← 当前价附近，轻仓试探</td></tr>
+      <tr style="background:#f5fdf8"><td><span class="delta-badge good">B2</span></td><td class="num success">18.00</td><td>🟢 标准买</td><td>30%</td><td>缩量止跌</td><td style="font-size:11px;color:#888">整数关口，支撑最稳的买点</td></tr>
+      <tr style="background:#fffef5"><td><span class="delta-badge good">B3</span></td><td class="num" style="color:#d4a000">17.00</td><td>🟡 重仓买</td><td>50%</td><td>放量长下影</td><td style="font-size:11px;color:#888">恐慌低吸，盈亏比最优</td></tr>
+      <tr style="background:#f0f5ff"><td><span class="delta-badge neutral">止损</span></td><td class="num" style="color:#3498db">15.80</td><td>🔵 无条件离场</td><td>全清</td><td>收盘跌破</td><td style="font-size:11px;color:#888">跌破则进入下降通道，不恋战</td></tr>
+    </tbody>
+  </table>
+
+  <div class="conclusion warn" style="margin-top:14px">
+    <b>🔍 洛钼核心逻辑：</b>18以下分批买 → 19以上分批卖，箱体不破反复做。跌破15.8认输。当前18.19在B1试探区，等18.00（B2）再动手胜率更高。洛钼振幅5.5% > 紫金4%，做T空间更大但风险也更高。
+  </div>
+</div>
+
+<!-- ═══════════ ④ 洛阳钼业 · 买卖规则 ═══════════ -->
+<div class="section" id="ch4">
+  <h2>④ 洛阳钼业 · 日/周买卖阈值</h2>
+  <div class="sec-sub">日内做T + 3~5日波段 + 周线级别 · 三级时间框架配合</div>
+
+  <div class="two-col">
+    <div class="insight-card green">
+      <h4>🟢 买入信号矩阵</h4>
+      <table class="data-table" style="font-size:11px">
+        <thead><tr><th>周期</th><th>阈值</th><th>确认条件</th></tr></thead>
+        <tbody>
+          <tr><td><b>日内</b></td><td>跌≥3% + 到箱底(≤18.0)</td><td>分时止跌</td></tr>
+          <tr><td><b>3-5日</b></td><td>回踩箱底 + 缩量</td><td>十字星/长下影</td></tr>
+          <tr><td><b>周线</b></td><td>周跌5-8% + 到17-18区间</td><td>周线长下影</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight-card c3">
+      <h4>🔴 卖出信号矩阵</h4>
+      <table class="data-table" style="font-size:11px">
+        <thead><tr><th>周期</th><th>阈值</th><th>确认条件</th></tr></thead>
+        <tbody>
+          <tr><td><b>日内</b></td><td>涨≥3% + 到箱顶(≥19.0)</td><td>冲高回落</td></tr>
+          <tr><td><b>3-5日</b></td><td>反弹箱顶 + 放量滞涨</td><td>上影线</td></tr>
+          <tr><td><b>周线</b></td><td>周涨5-8% + 到19-20区间</td><td>周线长上影</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="insight-row">
+    <div class="insight-card c1">
+      <h4>💰 仓位分配</h4>
+      <p>单票上限 <b>≤50%</b> 总资金<br>单次分 <b>3批</b>，绝不一次打完<br>止盈后等 <b>至少3天</b>或回箱底再进<br>连续止损 <b>2次</b> → 暂停1周</p>
+    </div>
+    <div class="insight-card warn">
+      <h4>⏱️ 时间周期推荐</h4>
+      <p>日内做T：振幅5.5%，空间大但需盯盘<br><b>⭐ 3-5日波段（最推荐）</b><br>周期短、频率高、胜率稳<br>周线级别：1-3周一个来回</p>
+    </div>
+    <div class="insight-card green">
+      <h4>📊 止跌确认信号</h4>
+      <p><b>缩量十字星</b>：抛压衰竭<br><b>长下影线</b>：有资金抄底<br><b>放量阳线反包</b>：多方反攻<br>三个信号出现其一即可动手</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ ⑤ 风控体系 ═══════════ -->
+<div class="section" id="ch5">
+  <h2>⑤ 风控体系 · 四维校验</h2>
+  <div class="sec-sub">量能确认 + 大盘配合 + 仓位纪律 + 止损铁律</div>
+
+  <div class="insight-row">
+    <div class="insight-card c1">
+      <h4>📊 成交量确认</h4>
+      <p><b>箱底买入</b>：缩量止跌（抛压衰竭）或放量长下影（资金抄底）<br><b>箱顶卖出</b>：放量滞涨（主力出货）或冲高回落（假突破）<br><b>⚠️ 假突破过滤</b>：突破箱体但无量 → 大概率假突破，不追涨不杀跌</p>
+    </div>
+    <div class="insight-card warn">
+      <h4>🌍 大盘配合</h4>
+      <p><b>大盘跌 + 个股跌到箱底</b> → 买点质量最高（系统性恐慌=黄金坑）<br><b>大盘涨 + 个股涨到箱顶</b> → 卖点质量最高（跟风冲顶=止盈时机）<br><b>大盘涨 + 个股不跟</b> → 警惕弱势，不宜加仓</p>
+    </div>
+    <div class="insight-card c3">
+      <h4>⛔ 止损铁律</h4>
+      <p><b>紫金</b>：收盘跌破 <b>27.50</b> → 全清<br><b>洛钼</b>：收盘跌破 <b>15.80</b> → 全清<br>不犹豫、不补仓、不幻想<br>连续止损3次 → 暂停策略，重新评估市场环境</p>
+    </div>
+  </div>
+
+  <div class="insight-row">
+    <div class="insight-card green">
+      <h4>📋 策略失效判定</h4>
+      <p>1. 收盘价有效跌破止损线<br>2. 放量突破箱体上沿（紫金34.3 / 洛钼20.0）→ 趋势改变<br>3. 公司基本面重大变化（业绩暴雷/行业政策巨变）<br>4. 连续止损3次 → 策略不适配当前市场</p>
+    </div>
+    <div class="insight-card c1">
+      <h4>🔄 箱体重新划定规则</h4>
+      <p>当股价在止损线以上、但持续3天以上在箱体外运行时：<br>取最近 <b>10个交易日</b>的高低点<br>重新计算 <b>70%筹码集中区</b><br>调整箱体上下沿</p>
+    </div>
+    <div class="insight-card warn">
+      <h4>⚡ 两只票的波动特征对比</h4>
+      <p><b>紫金</b>：波动率35%，日均振幅4%<br>大盘蓝筹，流动性好，做T稳定<br><b>洛钼</b>：日均振幅5.5%<br>弹性更大，做T空间更大<br>但波动风险也更高，仓位应更谨慎</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ ⑥ 当前作战地图 ═══════════ -->
+<div class="section" id="ch6">
+  <h2>⑥ 当前作战地图</h2>
+  <div class="sec-sub">2026年6月5日收盘 · 两只票所处位置 + 具体操作建议</div>
+
+  <div class="two-col">
+    <div class="insight-card c1">
+      <h4>🏔️ 紫金矿业 · 当前位置</h4>
+      <p>
+        <b>📍 当前价 29.63 元</b> → 箱体下沿（29.60）附近<br><br>
+        距 B1试探买（29.60）：仅 <b style="color:#27ae60">0.03 元</b><br>
+        距 B2标准买（29.00）：差 <b>0.63 元（-2.1%）</b><br>
+        距 止损线（27.50）：差 <b style="color:#e74c3c">2.13 元（-7.2%）</b><br><br>
+        <b style="color:#27ae60">✅ 当前建议：观察区，等29.00</b><br>
+        1. 已在B1附近，可试探买（20%），但需止跌信号<br>
+        2. 更建议等29.00再动手，盈亏比更好<br>
+        3. 如果到27.80 → 大胆重仓（B3）
+      </p>
+    </div>
+    <div class="insight-card green">
+      <h4>⛏️ 洛阳钼业 · 当前位置</h4>
+      <p>
+        <b>📍 当前价 18.19 元</b> → 箱体下沿（18.20）附近<br><br>
+        距 B1试探买（18.20）：仅 <b style="color:#27ae60">0.01 元</b><br>
+        距 B2标准买（18.00）：差 <b>0.19 元（-1.0%）</b><br>
+        距 止损线（15.80）：差 <b style="color:#e74c3c">2.39 元（-13.1%）</b><br><br>
+        <b style="color:#27ae60">✅ 当前建议：观察区，等18.00</b><br>
+        1. 已在B1附近，可试探买（20%），但需止跌信号<br>
+        2. 更建议等18.00再动手<br>
+        3. 如果到17.00 → 重仓（B3）
+      </p>
+    </div>
+  </div>
+
+  <div class="conclusion warn" style="margin-top:14px">
+    <b>⚠️ 当前形势研判：</b>两只票都处于箱体下沿附近，是<b>潜在买点区域</b>。但技术面偏空（MACD零轴下死叉、主力资金流出、筹码大面积套牢），建议<b>等待止跌确认信号</b>（缩量十字星/长下影/放量阳线反包）再进场，不要急着抄底。这是一个典型的「等右侧确认」局面。
+  </div>
+</div>
+
+<!-- ═══════════ ⑦ 每日操作清单 ═══════════ -->
+<div class="section" id="ch7">
+  <h2>⑦ 每日操作清单 & 行动建议</h2>
+
+  <table class="action-table">
+    <thead><tr><th style="width:30px">#</th><th>时间节点</th><th>优先级</th><th>具体动作</th><th>目的</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>9:25 集合竞价</td><td><span class="prio prio-h">P0 每日</span></td><td>看高开/低开幅度，是否跳空突破箱体</td><td>判断开盘方向，预判当日走势</td></tr>
+      <tr><td>2</td><td>9:30-10:30 早盘</td><td><span class="prio prio-h">P0 每日</span></td><td>看前1小时量能：放量还是缩量？方向确认还是假突破？</td><td>量能验证方向真实性</td></tr>
+      <tr><td>3</td><td>14:30-15:00 尾盘</td><td><span class="prio prio-m">P1 每日</span></td><td>尾盘信号：有没有止跌形态（十字星/长下影）？冲高回落还是放量突破？</td><td>尾盘是主力真实意图窗口</td></tr>
+      <tr><td>4</td><td>收盘后</td><td><span class="prio prio-m">P1 每日</span></td><td>记录今天是否触发买卖点，更新持仓计划，标记关键价格</td><td>保持纪律，避免情绪化操作</td></tr>
+      <tr><td>5</td><td>每周五</td><td><span class="prio prio-l">P2 每周</span></td><td>复盘周线：本周是否在箱体内？箱体是否被破坏？调整下周区间</td><td>周线级别验证箱体有效性</td></tr>
+      <tr><td>6</td><td>触发止损时</td><td><span class="prio prio-h">P0 立即</span></td><td>无条件全部清仓，不犹豫、不补仓、不幻想</td><td>截断亏损，保存本金</td></tr>
+    </tbody>
+  </table>
+
+  <div class="conclusion" style="margin-top:14px">
+    <b>📌 一句话策略：</b>紫金看 29-31.5 箱体，洛钼看 18-19.5 箱体。<b>跌到箱底缩量止跌 → 分批买；涨到箱顶放量滞涨 → 分批卖。</b>箱体不破反复做，箱体破了果断走。
+  </div>
+</div>
+
+<!-- ═══════════ 数据附录 ═══════════ -->
+<div class="section">
+  <h2>📋 附录：关键价格位汇总</h2>
+  <table class="data-table">
+    <thead><tr>
+      <th>股票</th><th>当前价</th><th>B1试探</th><th>B2标准</th><th>B3重仓</th><th>S1减仓</th><th>S2卖出</th><th>S3清仓</th><th>止损</th>
+    </tr></thead>
+    <tbody>
+      <tr><td><b>紫金矿业</b></td><td>29.63</td><td class="num success">29.60</td><td class="num success">29.00</td><td class="num" style="color:#d4a000">27.80</td><td class="num" style="color:#d4a000">31.50</td><td class="num danger">32.00</td><td class="num danger">33.00</td><td class="num" style="color:#3498db">27.50</td></tr>
+      <tr><td><b>洛阳钼业</b></td><td>18.19</td><td class="num success">18.20</td><td class="num success">18.00</td><td class="num" style="color:#d4a000">17.00</td><td class="num" style="color:#d4a000">19.00</td><td class="num danger">19.50</td><td class="num danger">20.00</td><td class="num" style="color:#3498db">15.80</td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top:12px;padding:10px 14px;background:#fafbfc;border-left:3px solid #cdd9e8;font-size:11px;color:#888;line-height:1.8;border-radius:4px">
+    <div>注 1：以上价格基于2026年6月5日收盘数据及近期技术分析，价格区间可能随市场变化需动态调整。</div>
+    <div>注 2：仓位百分比为相对于单票配置资金，非总资金。单票上限建议不超过总资金的50%。</div>
+    <div>注 3：止损线 = 箱体下沿之下约0.5-1个ATR（平均真实波幅），跌破则视为箱体结构破坏。</div>
+    <div>注 4：⚠️ 以上分析基于公开技术指标和盘面数据，仅供思路参考，不构成投资建议。投资有风险，入市需谨慎。</div>
+  </div>
+</div>
+
+<div class="footer-note">
+  📦 紫金矿业(601899) + 洛阳钼业(603993) · 箱体波动高胜率策略 · 数据截至 2026-06-05 · 仅供思路参考
+</div>
+
+</div><!-- container -->
+</body>
+</html>
